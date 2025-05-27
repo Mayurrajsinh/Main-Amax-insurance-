@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="46.314" height="46.515" viewBox="0 0 46.314 46.515">
+    <defs>
+        <style>
+            .cls-2{fill:#e1e1e1}
+        </style>
+    </defs>
+    <g id="Group_14568" transform="translate(-161.818 -359.665)">
+        <g id="Group_13801" transform="translate(162.818 360.667)">
+            <g id="Group_13798" transform="translate(10.169)">
+                <g id="Group_13788">
+                    <g id="Group_13799">
+                        <g id="Group_13786">
+                            <path id="Rectangle_2602" fill="#fff" stroke="#16272a" stroke-width="2px" d="M0 0H27.362V34.574H0z" transform="rotate(-.108 27.587 .026)"/>
+                            <g id="Group_13785" transform="translate(2.847 22.537)">
+                                <path id="Rectangle_2607" d="M0 0H13.239V0.442H0z" class="cls-2" transform="rotate(-.108 1414.89 -1.32)"/>
+                                <path id="Rectangle_2608" d="M0 0H13.239V0.442H0z" class="cls-2" transform="rotate(-.108 13.263 .012)"/>
+                                <path id="Rectangle_2609" d="M0 0H21.034V0.442H0z" class="cls-2" transform="rotate(-.108 2650.995 -2.276)"/>
+                                <path id="Rectangle_2610" d="M0 0H21.034V0.442H0z" class="cls-2" transform="rotate(-.108 4057.396 -3.603)"/>
+                                <path id="Rectangle_2611" d="M0 0H21.034V0.442H0z" class="cls-2" transform="rotate(-.108 5594.305 -5.338)"/>
+                            </g>
+                            <path id="Rectangle_2613" d="M0 0H6.539V6.381H0z" class="cls-2" transform="rotate(-.108 11833.778 -9081.374)"/>
+                        </g>
+                    </g>
+                </g>
+            </g>
+            <path id="Path_10406" fill="#dcf5f8" stroke="#363636" stroke-width="2px" d="M364.931 345.753v-2.316a2.342 2.342 0 0 0-2.342-2.342H351.1a2.342 2.342 0 0 0-2.342 2.342v30.131a2.342 2.342 0 0 0 2.342 2.342h39.631a2.342 2.342 0 0 0 2.342-2.342v-23.132a2.342 2.342 0 0 0-2.342-2.342h-23.458a2.342 2.342 0 0 1-2.342-2.341z" transform="translate(-348.757 -331.397)"/>
+        </g>
+        <g id="Group_14567" transform="translate(177.756 382.286)">
+            <g id="Group_14099">
+                <path id="Path_10503" fill="#363636" stroke="#363636" stroke-width="0.5px" d="M262.114 1030.02a1.145 1.145 0 0 0-1.593 0l-3.779 3.777v-10.65a1.147 1.147 0 0 0-2.294 0v10.65l-3.777-3.777a1.147 1.147 0 0 0-1.622 1.621l5.735 5.735a1.147 1.147 0 0 0 1.622 0l5.734-5.735a1.146 1.146 0 0 0-.026-1.621z" transform="translate(-248.726 -1022)"/>
+            </g>
+        </g>
+    </g>
+</svg>

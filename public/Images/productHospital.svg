@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="45.701" height="45.701" viewBox="0 0 45.701 45.701">
+    <defs>
+        <linearGradient id="linear-gradient" x1="1.079" x2="-.237" y1="1.619" y2="-1.016" gradientUnits="objectBoundingBox">
+            <stop offset="0" stop-color="#0d3594" stop-opacity=".898"/>
+            <stop offset="1" stop-color="#35d3e1"/>
+        </linearGradient>
+        <style>
+            .cls-1{stroke:transparent;fill:url(#linear-gradient)}
+        </style>
+    </defs>
+    <g id="Group_14121" transform="translate(.5 .5)">
+        <path id="Path_10523" d="M340.611 977.8h-9.16v-12.091a1.1 1.1 0 0 0-1.1-1.1h-21.983a1.1 1.1 0 0 0-1.1 1.1V977.8h-9.16a1.1 1.1 0 0 0-1.1 1.1v29.312a1.1 1.1 0 0 0 1.1 1.1h42.5a1.1 1.1 0 0 0 1.1-1.1V978.9a1.1 1.1 0 0 0-1.097-1.1zm-1.1 2.2v27.114h-8.061V980zm-18.32 13.19v13.923h-3.664v-13.924zm-7.328-2.2v2.2h1.466v13.923h-5.862v-40.3h19.785v40.3h-5.862v-13.924h1.466v-2.2zM307.269 980v27.114h-8.061V980z" class="cls-1" transform="translate(-297.01 -964.61)"/>
+        <path id="Path_10524" d="M319.5 970.64a1.1 1.1 0 0 0-1.1-1.1h-1.832v-1.832a1.1 1.1 0 0 0-1.1-1.1h-2.928a1.1 1.1 0 0 0-1.1 1.1v1.832h-1.832a1.1 1.1 0 0 0-1.1 1.1v2.931a1.1 1.1 0 0 0 1.1 1.1h1.832v1.829a1.1 1.1 0 0 0 1.1 1.1h2.931a1.1 1.1 0 0 0 1.1-1.1v-1.832h1.829a1.1 1.1 0 0 0 1.1-1.1zm-6.962 1.832h-1.832v-.733h1.832a1.1 1.1 0 0 0 1.1-1.1v-1.832h.733v1.832a1.1 1.1 0 0 0 1.1 1.1h1.829v.733h-1.832a1.1 1.1 0 0 0-1.1 1.1v1.828h-.733v-1.832a1.1 1.1 0 0 0-1.095-1.096z" class="cls-1" transform="translate(-291.656 -963.679)"/>
+    </g>
+</svg>

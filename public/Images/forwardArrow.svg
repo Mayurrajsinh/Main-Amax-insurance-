@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="20.151" height="19.18" viewBox="0 0 20.151 19.18">
+    <defs>
+        <linearGradient id="zskxitxpfa" x1="1.079" y1="1.619" x2="-.237" y2="-1.016" gradientUnits="objectBoundingBox">
+            <stop offset="0" stop-color="#0d3594" stop-opacity=".898"/>
+            <stop offset="1" stop-color="#35d3e1"/>
+        </linearGradient>
+    </defs>
+    <path data-name="Icon ionic-md-arrow-forward-2" d="M1034.864 575.573h13.2l-5.773 5.773a1.193 1.193 0 0 0 .015 1.7 1.194 1.194 0 0 0 1.673-.015l8.644-8.644-8.642-8.642a1.175 1.175 0 0 0-1.661 0 1.176 1.176 0 0 0 0 1.658l5.748 5.8h-13.2a1.183 1.183 0 0 0-1.183 1.183 1.183 1.183 0 0 0 1.179 1.187z" transform="translate(-1033.181 -564.801)" style="stroke:transparent;fill:url(#zskxitxpfa)"/>
+</svg>
