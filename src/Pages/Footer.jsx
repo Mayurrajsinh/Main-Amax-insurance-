@@ -19,7 +19,7 @@ function Footer() {
             </div>
             <div className="link text-right">
   <NavLink to="/" className={navLinkClass}>Home</NavLink>
-<NavLink to="/claim" className={navLinkClass}>Claim</NavLink>
+<NavLink to="/claim/health-insurance" className={navLinkClass}>Claim</NavLink>
 <NavLink to="/support" className={navLinkClass}>Support</NavLink>
             </div>
             </div>

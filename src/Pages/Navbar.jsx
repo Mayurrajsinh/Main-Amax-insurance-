@@ -7,16 +7,10 @@ import {
   Contact,
   FileUser,
   Menu,
-  X,
 } from 'lucide-react';
-import { Link } from 'react-router-dom';
 
-import {
-  DropdownMenu,
-  DropdownMenuTrigger,
-  DropdownMenuContent,
-  DropdownMenuItem,
-} from '@/Components/ui/dropdown-menu';
+import { Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 
 import {
   Sheet,
@@ -24,24 +18,44 @@ import {
   SheetTrigger,
   SheetHeader,
   SheetTitle,
-} from '@/Components/ui/sheet';
+} from "@/components/ui/sheet";
 
-import { Button } from '@/Components/ui/button';
-import { useState } from 'react';
+import {
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuItem,
+} from "@/components/ui/dropdown-menu";
 
+import { Button } from "@/components/ui/button";
 
 function Navbar() {
   const [open, setOpen] = useState(false);
 
+  // Automatically close Sheet on desktop screen resize
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 1024) {
+        setOpen(false); // Close sheet when on desktop
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    // Run once to close sheet if already open and screen is resized manually
+    handleResize();
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
   return (
-    <>
-
     <div className="flex justify-between items-center h-22 px-1 border-b border-b-blue-100 z-50 fixed w-full bg-white">
-      {/* <h1 className="text-xl font-bold">Amax Ins.</h1> */}
-    <div className="logo h-16 w-16 ">
-    <img src="Images/AMAX.png" className='h-full w-full object-contain' alt="" />
+      <Link to = "/" className="logo h-16 w-16 block">
+        <img src="/Images/AMAX.png" className='h-full w-full object-contain' alt="Logo" />
+      </Link>
 
-    </div>
       {/* Hamburger for mobile */}
       <div className="lg:hidden">
         <Sheet open={open} onOpenChange={setOpen}>
@@ -52,14 +66,13 @@ function Navbar() {
           </SheetTrigger>
           <SheetContent side="right" className="w-[280px] p-2">
             <SheetHeader>
-              <SheetTitle className="flex justify-between items-center  text-right -mb-5 -ml-4 ">
+              <SheetTitle className="flex justify-between items-center text-right -mb-5 -ml-4">
                 Menu
-          
               </SheetTitle>
             </SheetHeader>
 
-            {/* Mobile Menu Content */}
             <div className="">
+              {/* Mobile Links */}
               <div>
                 <h3 className="font-semibold text-base mb-2">Person</h3>
                 <ul className="space-y-1 text-sm pl-2">
@@ -88,17 +101,31 @@ function Navbar() {
                   <li><Link to="/service/bike-insurance">Bike Insurance</Link></li>
                 </ul>
               </div>
-              <div>
-                <h3 className="font-semibold text-base mb-2">NavClaim</h3>
-                <ul className="space-y-1 text-sm pl-2">
-                  <li><Link to="/service/car-insurance">Car Insurance</Link></li>
-                  <li><Link to="/service/bike-insurance">Bike Insurance</Link></li>
-                </ul>
-              </div>
+
               <div className="space-y-2 pt-2 border-t mt-4">
-                <Link to="/claim" className="flex items-center gap-1">
-                  <BadgeCent size={16} /> Claim
-                </Link>
+                <div className="flex">
+                  <Sheet>
+                    <SheetTrigger className="flex items-center gap-1 px-3 py-2 rounded-full hover:bg-blue-100">
+                      <BadgeCent size={16} /> Claim
+                    </SheetTrigger>
+                    <SheetContent side="left" className="w-[300px] sm:w-[400px] bg-white">
+                      <div className="p-4 space-y-4">
+                        <h2 className="text-lg font-semibold mb-2">Claim Types</h2>
+                        <div className="grid grid-cols-2 gap-4">
+                          <Link to="/claim/health-insurance" className="flex flex-col items-center text-center">
+                            <img src="/Images/Health_Insurance.png" alt="Health Insurance" className="w-10 h-10 mb-1" />
+                            <span className="text-sm">Health</span>
+                          </Link>
+                          <Link to="/claim/home-insurance" className="flex flex-col items-center text-center">
+                            <img src="/Images/home_ins.png" alt="Home Insurance" className="w-10 h-10 mb-1" />
+                            <span className="text-sm">Home</span>
+                          </Link>
+                        </div>
+                      </div>
+                    </SheetContent>
+                  </Sheet>
+                </div>
+
                 <Link to="/support" className="flex items-center gap-1">
                   <CircleHelp size={16} /> Support
                 </Link>
@@ -113,6 +140,7 @@ function Navbar() {
 
       {/* Desktop Menu */}
       <div className="hidden lg:flex items-center justify-center gap-4">
+          <div className="hidden lg:flex items-center justify-center gap-4">
         {/* Person Dropdown */}
         <DropdownMenu>
           <DropdownMenuTrigger className="cursor-pointer px-4 py-2 rounded-full hover:bg-blue-100  flex items-center gap-1">
@@ -263,9 +291,8 @@ function Navbar() {
           My Policy
         </button>
       </div>
+      </div>
     </div>
-    </>
-
   );
 }
 

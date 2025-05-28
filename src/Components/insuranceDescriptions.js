@@ -164,13 +164,54 @@ const insuranceDescriptions = {
         'Discharge voucher',
       ],
     },
-    'pet-insurance':{
-        title: 'Pet Insruance Claim',
-        description: 'To complete the Pet insurance claim process successfully start by notifying the insurance provider within 24 hours. Bajaj Allianz representatives are available on the above-given toll-free number. Get immediate help for your pet from a qualified veterinary doctor. It is advised not to wait for the insurance claims to be processed because the pet insurance claims are reimbursed to the pet owner’s bank accounts. If your pet is suffering from an illness or has met with an accident, you can file for a claim with the required documents.',
-        procedure:[
-            'To complete the Pet insurance claim process successfully start by notifying the insurance provider within 24 hours. Bajaj Allianz representatives are available on the above-given toll-free number. Get immediate help for your pet from a qualified veterinary doctor. It is advised not to wait for the insurance claims to be processed because the pet insurance claims are reimbursed to the pet owner’s bank accounts. If your pet is suffering from an illness or has met with an accident, you can file for a claim with the required documents.',
-            'Visit the Bajaj Allianz Pet Insurance Product Page to check the availability of the claim. Go to the Inclusions and Exclusions section to know which diseases and scenarios are covered under your policy.'
-        ]
+    'pet-insurance': {
+        title: "Pet Insurance Claim",
+        oneLiner: "Start your pet insurance claim within 24 hours of the incident to ensure smooth processing.",
+        description:
+            "To complete the Pet Insurance claim process successfully, notify the insurer within 24 hours. Bajaj Allianz representatives are available via toll-free number. Get immediate help for your pet from a qualified veterinary doctor. Claims are reimbursed, so seek treatment first and then file the claim with all required documents.",
+        procedure: [
+            "Visit the Bajaj Allianz Pet Insurance Product Page to verify claim eligibility.",
+            "Check Inclusions and Exclusions to see covered illnesses and scenarios.",
+            "Call the insurer and report the incident.",
+            "Submit the claim and required documents as per the checklist.",
+        ],
+        claimForms: [
+            "Duly completed claim form",
+            "Vaccination Certificates",
+            "Death Certificate with photographs (for Mortality Benefit Cover)",
+            "Vet Medical Papers and Bill (for various covers)",
+            "General Diary Entry (for Theft/Lost/Straying Cover)",
+            "FIR (for Third Party Liability Cover)",
+            "Copy of advertisement (for Theft/Lost/Straying Cover)",
+            "Hospital bill (for Hospitalization)",
+            "Court Orders (for Third Party Liability Cover)",
+            "Diagnostics Report (for Terminal Diseases, Long Term Care, OPD Cover)",
+            "Photos of pet with newspaper showing date",
+            "Photo of RFID Tag/Microchip (if applicable)",
+            "Any other documents as required by the company"
+        ],
+        documentsRequired: {
+            waitingPeriod: [
+            "30 days for claims under Surgery & Hospitalization, Terminal Diseases, Long Term Care, OPD, Mortality Benefit.",
+            "90 days for claims under Theft/Lost/Straying Cover.",
+            "No waiting period for Third Party Liability Cover or accident claims.",
+            "No waiting period if policy is continuously renewed."
+            ],
+            paymentResponsibility: [
+            "You pay the service provider directly.",
+            "File the claim afterward for reimbursement.",
+            "Co-pay or deductible may apply for some sections."
+            ],
+            processingTime: [
+            "Claim is typically processed within 15 days after submitting all documents and resolving queries."
+            ],
+            theftProcedure: [
+            "Inform the police immediately after pet theft.",
+            "FIR is not mandatory; General Diary Entry is accepted.",
+            "Report the theft to the insurer within 24 hours.",
+            "Submit the claim if pet is not found within 45 days."
+            ]
+        }
     }
   },
   // Add other insurance types similarly...
