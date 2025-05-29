@@ -51,6 +51,7 @@ function Navbar() {
   }, []);
 
   return (
+    <>
     <div className="flex justify-between items-center h-22 px-1 border-b border-b-blue-100 z-50 fixed w-full bg-white">
       <Link to = "/" className="logo h-16 w-16 block">
         <img src="/Images/AMAX.png" className='h-full w-full object-contain' alt="Logo" />
@@ -293,6 +294,8 @@ function Navbar() {
       </div>
       </div>
     </div>
+    </>
+
   );
 }
 
