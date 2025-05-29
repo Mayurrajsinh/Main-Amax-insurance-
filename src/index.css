@@ -3,13 +3,13 @@
 @import "tailwindcss/utilities";
 @import "tw-animate-css"; 
 
-@custom-variant dark (&:is(.dark *));
+/* @custom-variant dark (&:is(.dark *)); */
 
 @import "tailwindcss";
 @import "tw-animate-css";
 
 
-@custom-variant dark (&:is(.dark *));
+/* @custom-variant dark (&:is(.dark *)); */
 *{
    font-family: "Poppins", sans-serif;
 }
