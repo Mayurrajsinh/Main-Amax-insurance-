@@ -1,10 +1,12 @@
 import React from "react";
 import { useParams } from 'react-router-dom'
+import RenewDetail from "./ui/RenewDetail";
 
 const RegistrationInputBox = () => {
     const { type } = useParams()
   return (
     <div className="flex flex-col items-center justify-center min-h-[300px]">
+      <h1 className="bg-[#516587] rounded-full py-1 px-6 text-white">Best price for your requirement </h1>
       <div className="bg-[#eff0f3] shadow-lg rounded-xl p-6 w-full max-w-md">
         <label htmlFor="regNumber" className="block text-sm font-semibold mb-2 text-gray-700 ml-2">
           Your <span className="text-blue-700">{type.split("-")[0]}</span> registration number
@@ -30,8 +32,11 @@ const RegistrationInputBox = () => {
           >
             Get Price
           </button>
+          
         </div>
       </div>
+      <h1 className="font-bold mt-2 items-start">Brand New {type.split("-")[0]}? <a href="#" className="text-blue-500">Clcik here</a></h1>
+        <RenewDetail />
     </div>
   );
 };

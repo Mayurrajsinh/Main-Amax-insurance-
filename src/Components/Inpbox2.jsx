@@ -20,7 +20,6 @@ const RegistrationInputBox = () => {
             boxShadow: "inset 0 2px 8px rgba(147, 147, 147, 0.94)",
           }}
         />
-        
         <div className="mt-3">
             <label htmlFor="regNumber" className="block text-sm font-semibold mb-2 text-gray-700 ml-2">
             Mobile number

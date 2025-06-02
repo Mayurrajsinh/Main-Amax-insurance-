@@ -37,9 +37,8 @@ function Home() {
 
   const scrollRef = useRef(null);
   const [activeIndex, setActiveIndex] = useState(0);
-  const cardWidth = 240; // width including margin
+  const cardWidth = 240;
   const [selectedCardIndex, setSelectedCardIndex] = useState(null);
-
 
   const scrollToCard = (index) => {
     if (scrollRef.current) {
@@ -47,13 +46,15 @@ function Home() {
         left: index * cardWidth,
         behavior: "smooth",
       });
+      setActiveIndex(index);
     }
   };
 
   const handleScroll = () => {
     if (scrollRef.current) {
-      const index = Math.round(scrollRef.current.scrollLeft / cardWidth);
-      setActiveIndex(index);
+      const scrollLeft = scrollRef.current.scrollLeft;
+      const index = Math.round(scrollLeft / cardWidth);
+      setActiveIndex(Math.min(index, plans.length - 1));
     }
   };
 
@@ -63,15 +64,17 @@ function Home() {
     return () => current?.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Refs for top image cards
   const imageRefs = useRef([]);
   imageRefs.current = images.map((_, i) => imageRefs.current[i] ?? React.createRef());
-
   const [activeImageIndex, setActiveImageIndex] = useState(0);
 
   const handleImageButtonClick = (index) => {
     setActiveImageIndex(index);
-    imageRefs.current[index]?.current?.scrollIntoView({ behavior: 'smooth', inline: 'center' });
+    imageRefs.current[index].current?.scrollIntoView({
+      behavior: 'smooth',
+      inline: 'start',
+      block: 'nearest',
+    });
   };
 
   return (
@@ -92,128 +95,118 @@ function Home() {
             </TabsList>
 
             {/* Top Category Images */}
-            <div className="overflow-x-auto scrollbar-hide">
-              <div className="flex gap-4 w-max">
-                {images.map((item, index) => (
-                  <div
-                    key={index}
-                    ref={imageRefs.current[index]}
-                    className="flex flex-col items-center min-w-[120px]"
-                  >
-                    <img
-                      src={item.img}
-                      alt={`Mini ${index}`}
-                      className="w-24 h-24 object-cover rounded-xl shadow-md"
+            <div className="w-full max-w-[600px] mx-auto">
+              <div className="overflow-x-auto scrollbar-hide">
+                <div className="flex gap-4 w-max px-2 py-4">
+                  {images.map((item, index) => (
+                    <div
+                      key={index}
+                      ref={imageRefs.current[index]}
+                      className="flex flex-col items-center min-w-[160px] scroll-smooth"
+                    >
+                      <img
+                        src={item.img}
+                        alt={`Slide ${index}`}
+                        className="w-36 h-36 object-cover rounded-xl shadow-lg"
+                      />
+                      <p className="text-sm mt-2 font-medium text-gray-700 text-center">{item.desc}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Dot Navigation for Images */}
+              <div className="flex w-full justify-center mt-4">
+                <div className="flex gap-2 bg-gray-200 rounded-full p-2">
+                  {images.map((_, index) => (
+                    <button
+                      key={index}
+                      onClick={() => handleImageButtonClick(index)}
+                      className={`w-4 h-4 rounded-full transition-colors duration-300 ${
+                        activeImageIndex === index ? 'bg-black' : 'bg-gray-400 hover:bg-gray-600'
+                      }`}
                     />
-                    <p className="text-sm mt-2 font-medium text-gray-700">{item.desc}</p>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
             </div>
 
-            {/* Image Navigation Buttons */}
-            <div className="flex w-full justify-center mt-4">
-              <div className="flex gap-2 bg-gray-300 rounded-2xl p-2">
-                {images.map((_, index) => (
-                  <button
-                    key={index}
-                    onClick={() => handleImageButtonClick(index)}
-                    className={`w-6 h-2 rounded-xl transition-colors duration-300 ${
-                      activeImageIndex === index
-                        ? 'bg-black'
-                        : 'bg-gray-300 hover:bg-gray-500'
-                    }`}
-                  ></button>
-                ))}
-              </div>
-            </div>
-
-            {/* CTA Button */}
             <button className="w-full h-12 bg-blue-400 rounded-3xl font-bold text-white">
               Get quote
             </button>
 
-            {/* Headings */}
             <div>
               <h2 className="text-2xl font-semibold">Find the Best Health Insurance</h2>
               <p className="text-gray-700">Secure Your Everyday at Every Step of the Way</p>
             </div>
 
             {/* Scrollable Plan Cards */}
-           {/* Scrollable Plan Cards */}
             <div
-  className="overflow-x-auto overflow-y-hidden scrollbar-hide pb-2 max-h-[140px]"
-  ref={scrollRef}
-  onWheel={(e) => {
-    // Convert vertical scroll to horizontal scroll
-    if (e.deltaY !== 0) {
-      e.preventDefault();
-      scrollRef.current.scrollLeft += e.deltaY;
-    }
-  }}
->
-  <div className="flex gap-4 w-max relative">
-    {plans.map(({ img, text, to }, index) => (
-      <div
-        key={index}
-        onClick={(e) => {
-          e.preventDefault(); // prevent vertical scroll
-          e.stopPropagation(); // prevent bubbling
-          setSelectedCardIndex(index === selectedCardIndex ? null : index);
-        }}
-        className={`bg-[#d1e9ff] hover:bg-[#b8dfff] rounded-xl shadow-md p-3 min-w-[220px] h-[100px] cursor-pointer transition-all duration-300 relative ${
-          selectedCardIndex === index ? "h-[140px]" : ""
-        }`}
-        style={{ transition: "height 0.3s ease" }}
-      >
-        <div className="flex items-center justify-between">
-          <img
-            src={`/${img}`}
-            alt={text}
-            className="w-12 h-12 object-contain mr-3"
-          />
-          <span className="text-sm font-medium text-white-800">{text}</span>
-        </div>
-
-        {/* Hidden Button (appears inside card) */}
-        {selectedCardIndex === index && (
-          <Link
-            to={to}
-            className="mt-2 absolute bottom-2 left-3 right-3 bg-black text-white text-sm text-center py-2 rounded-lg z-10"
-            onClick={(e) => {
-              e.stopPropagation();
-            }}
-          >
-            View Details
-          </Link>
-        )}
-      </div>
-    ))}
-  </div>
-</div>
-
-            {/* Dot Scroller */}
-            <ul className="flex justify-center space-x-2 mt-2">
-              {plans.map((_, index) => (
-                <li key={index}>
-                  <button
-                    onClick={() => scrollToCard(index)}
-                    className={`w-3 h-3 rounded-full border border-gray-400 ${
-                      activeIndex === index ? "bg-blue-500" : "bg-gray-300"
+              className="overflow-x-auto overflow-y-hidden scrollbar-hide pb-2 max-h-[140px]"
+              ref={scrollRef}
+              onWheel={(e) => {
+                if (e.deltaY !== 0) {
+                  e.preventDefault();
+                  scrollRef.current.scrollLeft += e.deltaY;
+                }
+              }}
+            >
+              <div className="flex gap-4 w-max relative">
+                {plans.map(({ img, text, to }, index) => (
+                  <div
+                    key={index}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
+                      setSelectedCardIndex(index === selectedCardIndex ? null : index);
+                    }}
+                    className={`bg-[#d1e9ff] hover:bg-[#b8dfff] rounded-xl shadow-md p-3 min-w-[220px] h-[100px] cursor-pointer transition-all duration-300 relative ${
+                      selectedCardIndex === index ? "h-[140px]" : ""
                     }`}
-                    aria-label={`Scroll to card ${index + 1}`}
-                  />
-                </li>
-              ))}
-            </ul>
+                    style={{ transition: "height 0.3s ease" }}
+                  >
+                    <div className="flex items-center justify-between">
+                      <img
+                        src={`/${img}`}
+                        alt={text}
+                        className="w-12 h-12 object-contain mr-3"
+                      />
+                      <span className="text-sm font-medium text-white-800">{text}</span>
+                    </div>
+                    {selectedCardIndex === index && (
+                      <Link
+                        to={to}
+                        className="mt-2 absolute bottom-2 left-3 right-3 bg-black text-white text-sm text-center py-2 rounded-lg z-10"
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        View Details
+                      </Link>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
 
-            {/* Final Explore Button */}
+            {/* ✅ Updated Dot Navigation for Plans (matching image style) */}
+            <div className="flex w-full justify-center mt-4">
+              <div className="flex gap-2 bg-gray-200 rounded-full p-2">
+                {plans.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => scrollToCard(index)}
+                    className={`w-4 h-4 rounded-full transition-colors duration-300 ${
+                      activeIndex === index ? 'bg-black' : 'bg-gray-400 hover:bg-gray-600'
+                    }`}
+                  />
+                ))}
+              </div>
+            </div>
+
             <Button className="w-full h-12 bg-white hover:bg-blue-400 text-black border border-gray-300 mt-4">
               Explore
             </Button>
           </div>
 
-          {/* Tab Contents */}
           {tabItems.map((tab) => (
             <TabsContent key={tab.value} value={tab.value}>
               {tab.content}
@@ -221,10 +214,10 @@ function Home() {
           ))}
         </Tabs>
 
-        {/* Side Image */}
-        <div className="img-con w-[400px]">
-          <img src="/hero.svg" alt="Hero" className='h-full w-full object-contain' />
-        </div>
+        {/* <div className="img-con w-[800px] sm:w-[400px] md:w-[500px] lg:w-[600px]">
+          <img src="/hero.svg" alt="Hero" className="w-full h-auto object-contain" />
+        </div> */}
+
       </div>
 
       <div className="flex justify-center my-8">

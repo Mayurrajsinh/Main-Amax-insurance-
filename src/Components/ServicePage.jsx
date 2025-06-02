@@ -56,6 +56,7 @@ function ServicePage() {
       {(type === 'AutoRickshaw-insurance') && (
         <div className="mt-6">
           <Inpbox2 type={type} />
+          {/* <h2>asdasd</h2> */}
         </div>
       )}
       {(type === 'Commercial-insurance') && (
