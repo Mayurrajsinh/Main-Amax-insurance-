@@ -6,38 +6,48 @@ const RegistrationInputBox = () => {
     const { type } = useParams()
   return (
     <div className="flex flex-col items-center justify-center min-h-[300px]">
-      <h1 className="bg-[#516587] rounded-full py-1 px-6 text-white">Best price for your requirement </h1>
-      <div className="bg-[#eff0f3] shadow-lg rounded-xl p-6 w-full max-w-md">
-        <label htmlFor="regNumber" className="block text-sm font-semibold mb-2 text-gray-700 ml-2">
-          Your <span className="text-blue-700">{type.split("-")[0]}</span> registration number
-        </label>
+  <div className="w-full max-w-md">
+    {/* Move the heading inside the wrapper and align left */}
+    <h1 className="bg-[#516587] rounded-full py-1 px-6 text-white mb-7 inline-block">
+      Best price for your requirement
+    </h1>
 
-        <input
-          type="text"
-          name="regNumber"
-          id="regNumber"
-          placeholder="GJ01AB1234"
-          className="w-full px-4 py-3 rounded-md text-sm border-none focus:outline-none bg-white shadow-inner placeholder-gray-400"
+    <div className="bg-[#eff0f3] shadow-lg rounded-xl p-6 w-full">
+      <label htmlFor="regNumber" className="block text-sm font-semibold mb-2 text-gray-700 ml-2">
+        Your <span className="text-blue-700">{type.split("-")[0]}</span> registration number
+      </label>
+
+      <input
+        type="text"
+        name="regNumber"
+        id="regNumber"
+        placeholder="GJ01AB1234"
+        className="w-full px-4 py-3 rounded-md text-sm border-none focus:outline-none bg-white shadow-inner placeholder-gray-400"
+        style={{
+          boxShadow: "inset 0 2px 8px rgba(147, 147, 147, 0.94)",
+        }}
+      />
+
+      <div className="flex justify-center mt-4">
+        <button
+          className="px-6 py-2 text-white rounded-full text-sm font-semibold shadow-md transition-all duration-300"
           style={{
-            boxShadow: "inset 0 2px 8px rgba(147, 147, 147, 0.94)",
+            background: "linear-gradient(179deg, rgba(13, 53, 148, 0.9) -102%, #35d3e1 162%)",
           }}
-        />
-
-        <div className="flex justify-center mt-4 ">
-          <button
-            className="px-6 py-2 text-white rounded-full text-sm font-semibold shadow-md transition-all duration-300"
-            style={{
-              background: "linear-gradient(179deg, rgba(13, 53, 148, 0.9) -102%, #35d3e1 162%)",
-            }}
-          >
-            Get Price
-          </button>
-          
-        </div>
+        >
+          Get Price
+        </button>
       </div>
-      <h1 className="font-bold mt-2 items-start">Brand New {type.split("-")[0]}? <a href="#" className="text-blue-500">Clcik here</a></h1>
-        <RenewDetail />
     </div>
+
+    <h1 className="font-bold mt-2">
+      Brand New {type.split("-")[0]}?{" "}
+      <a href="#" className="text-blue-500">Click here</a>
+    </h1>
+  </div>
+  <RenewDetail />
+</div>
+
   );
 };
 
