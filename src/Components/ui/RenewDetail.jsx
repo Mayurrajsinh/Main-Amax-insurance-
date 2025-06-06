@@ -1,4 +1,5 @@
 import React from 'react'
+import RenewDes from '../RenewDes'
 
 function RenewDetail() {
     const rewinfo = [
@@ -9,9 +10,9 @@ function RenewDetail() {
     ]
   return (
     <>
-    {/* <p>Google Review Rating</p>
-    <h4>7.7 crore Happy  Cutomers</h4> */}
-    <div className="flex flex-row gap-6 justify-center  items-center flex-wrap md:flex-nowrap px-4 py-6 w-full rounded-t-2xl ">
+   <div className="flex flex-col justify-center items-center w-full min-h-[500px] px-4 py-6">
+    <RenewDes />
+       <div className="flex flex-row gap-6 justify-center  items-center flex-wrap md:flex-nowrap px-4 py-6 w-full rounded-t-2xl ">
       {rewinfo.map((item, index) => (
         <div
           key={index}
@@ -29,6 +30,7 @@ function RenewDetail() {
         </div>
       ))}
     </div>
+   </div>
     </>
   )
 }
