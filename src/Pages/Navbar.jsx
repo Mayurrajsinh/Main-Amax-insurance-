@@ -286,11 +286,12 @@ function Navbar() {
           <CircleHelp size={16} />
           Support
         </Link>
-
-        <button className="flex items-center justify-center hover:bg-black hover:text-white gap-1 bg-blue-500 text-blue-100 cursor-pointer px-4 py-2 rounded-full">
+        <Link to="/MyPolicy">
+          <button className="flex items-center justify-center hover:bg-black hover:text-white gap-1 bg-blue-500 text-blue-100 cursor-pointer px-4 py-2 rounded-full">
           <FileUser size={16} />
           My Policy
         </button>
+        </Link>
       </div>
       </div>
     </div>

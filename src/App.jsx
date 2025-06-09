@@ -5,6 +5,7 @@ import Home from "./Pages/Home"
 import Claim from './Pages/Claim'
 import Footer from './Pages/Footer'
 import Support from './Pages/Support'
+import MyPolicy from './Pages/MyPolicy'
 
 
 
@@ -18,6 +19,7 @@ function App() {
         <Route path="/service/:type" element={<ServicePage />} />
          <Route path="/claim/:insuranceType" element={<Claim />} />
         <Route path="/support" element={<Support />} />
+        <Route path="/MyPolicy" element={<MyPolicy />} />
 
       </Routes>
       <Footer/>

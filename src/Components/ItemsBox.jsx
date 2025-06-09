@@ -95,7 +95,7 @@ const ItemBox = ({ tabItems, tabImages, plans }) => {
           {/* Dot Navigation for Images */}
           <div className="flex w-full justify-center mt-4">
             <div className="flex gap-2 bg-gray-200 rounded-full p-2">
-              {(tabImages[activeTab] || []).map((_, index) => (
+              {(tabImages[activeTab] || []).map((_, index) => ( 
                 <button
                   key={index}
                   onClick={() => handleImageButtonClick(index)}

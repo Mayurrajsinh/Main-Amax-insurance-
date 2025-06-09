@@ -11,6 +11,15 @@ const RegistrationInputBox = () => {
     { heading: "Exclusions", description: "What's not covered?" },
     { heading: "Additional Covers", description: "What else can you get?" },
   ];
+  const handleCarRenewClick = () => {
+  setFeatureData([
+    { heading: "Coverage Highlights", description: "Know more" },
+    { heading: "Inclusions", description: "What's covered?" },
+    { heading: "Exclusions", description: "What's not covered?" },
+    { heading: "Additional Covers", description: "What else can you get?" },
+    { heading: "Key Highlights", description: "Know now" }, 
+  ]);
+};
 
   const [openIndex, setOpenIndex] = useState(null);
 
@@ -72,54 +81,92 @@ const RegistrationInputBox = () => {
           </div>
 
           {/* Right Side – Info Box */}
-          <div className="w-full max-w-md bg-white p-6 rounded-xl shadow-lg space-y-4">
+          <div className="w-full max-w-[700px] bg-white px-8 py-6 rounded-2xl shadow-2xl ml-auto mr-6 space-y-8">
 
-            {/* Static top section */}
-            <div className="flex flex-col">
-              <h2 className="text-lg font-bold text-gray-800">Key Features</h2>
-              <p className="text-sm text-gray-600">Renew Your Ride, Secure Your Journey!</p>
-            </div>
-
-            {/* Toggleable sections */}
-            {featureData.map((item, index) => (
-  <div key={index} className="border-t pt-4">
-    <div
-      className="flex items-center justify-between cursor-pointer"
-      onClick={() => toggleSection(index)}
-    >
-      <div className="flex gap-2 items-center">
-        {/* Round icon before heading */}
-        <div className="w-6 h-6 flex items-center justify-center bg-blue-500 text-white rounded-full text-xs">
-          <FaArrowRight />
-        </div>
-        <h2 className="text-lg font-bold text-gray-800">{item.heading}</h2>
-      </div>
-
-      <div className="ml-4 text-gray-600">
-        {openIndex === index ? <FaChevronUp /> : <FaChevronDown />}
-      </div>
-    </div>
-
-    {openIndex === index && (
-      <div className="mt-2 ml-8 text-sm text-gray-700 space-y-2">
-        {/* Show normal description for others */}
-        {item.heading === "Coverage Highlights" ? (
-          <>
-            <div><strong>Accidental Damage:</strong> Covers repair or replacement costs from collisions or mishaps</div>
-            <div><strong>Theft Protection:</strong> Safeguards against loss or attempted theft of the vehicle</div>
-            <div><strong>Third-Party Liability:</strong> Protection for injuries and property damage to others</div>
-            <div><strong>Fire & Natural Calamities:</strong> Covers damages from fire incidents or extreme weather</div>
-            <div><strong>Personal Accident Cover:</strong> Financial support for injuries sustained during an accident</div>
-          </>
-        ) : (
-          <p>{item.description}</p>
-        )}
-      </div>
-    )}
-  </div>
-))}
-
+          {/* Static top section */}
+          <div className="flex flex-col space-y-1">
+            <h2 className="text-xl font-bold text-gray-900">Key Features</h2>
+            <p className="text-sm text-gray-600">Renew Your Ride, Secure Your Journey!</p>
           </div>
+
+          {/* Toggleable sections */}
+          {featureData.map((item, index) => (
+            <div key={index} className="border-t pt-5">
+              <div
+                className="flex items-center justify-between cursor-pointer"
+                onClick={() => toggleSection(index)}
+              >
+                <div className="flex flex-col">
+                  <h3 className="text-lg font-bold text-gray-800">{item.heading}</h3>
+                  <p className="text-lg text-gray-600 whitespace-nowrap">{item.description}</p>
+                </div>
+
+                <div className="ml-4 text-gray-600 text-xl">
+                  {openIndex === index ? <FaChevronUp /> : <FaChevronDown />}
+                </div>
+              </div>
+
+              {openIndex === index && (
+                <div className="mt-4 text-sm text-gray-700 space-y-3 pl-2">
+                  {item.heading === "Coverage Highlights" ? (
+                    <>
+                      {[
+          ["Accidental Damage:", "Covers repair or replacement costs from collisions or mishaps"],
+          ["Theft Protection:", "Safeguards against loss or attempted theft of the vehicle"],
+          ["Third-Party Liability:", "Protection for injuries and property damage to others"],
+          ["Fire & Natural Calamities:", "Covers damages from fire incidents or extreme weather"],
+          ["Personal Accident Cover:", "Financial support for injuries sustained during an accident"]
+        ].map(([title, desc], i) => (
+          <div key={i} className="mb-3">
+            <strong className="block text-lg text-[#264A9F]">{title}</strong>
+            <span className="text-gray-700 text-sm">{desc}</span>
+          </div>
+        ))}
+
+            </>
+          ) : item.heading === "Inclusions" ? (
+            <ul className="list-disc ml-5 space-y-2 text-lg">
+              <li>Damage due to accidents, fire, theft, and natural calamities</li>
+              <li>Third-party liabilities including bodily injury and property damage</li>
+              <li>Personal accident cover for both the policyholder and optional pillion rider</li>
+              <li>Coverage for damages incurred during transit of the vehicle</li>
+              <li>Add-on covers like zero depreciation and engine protection (as opted)</li>
+            </ul>
+          ) : item.heading === "Exclusions" ? (
+            <ul className="list-disc ml-5 space-y-2 text-lg">
+              <li>Normal wear and tear or mechanical/electrical breakdowns</li>
+              <li>Riding without a valid licence or under the influence of alcohol or drugs</li>
+              <li>Unauthorised modifications and racing-related damages</li>
+              <li>Damage outside the geographical limits of the policy</li>
+              <li>Intentional damage or fraudulent claims (as opted)</li>
+            </ul>
+          ) : item.heading === "Additional Covers" ? (
+            <ul className="list-disc ml-5 space-y-2 text-lg">
+              <li>24/7 emergency claim assistance and customer support</li>
+              <li>Dedicated digital policy management platform</li>
+              <li>Fast-track claim processing for quick settlements</li>
+              <li>Free roadside assistance and towing services</li>
+              <li>Regular updates on policy benefits and renewal reminders</li>
+              <li>Expert advice for maintenance and safety enhancements</li>
+            </ul>
+          ) : item.heading === "Key Highlights" ? (
+            <ul className="list-disc ml-5 space-y-2 text-lg">
+              <li>Best-in-class renewal coverage options</li>
+              <li>Seamless online policy updates</li>
+              <li>Instant premium calculation and discounts</li>
+              <li>24x7 support for claims and queries</li>
+              <li>Dedicated assistance for expired policies</li>
+            </ul>
+          ) :
+          (
+            <p className="text-gray-600">Content coming soon...</p>
+          )}
+        </div>
+      )}
+    </div>
+  ))}
+          </div>
+
 
         </div>
       </div>
