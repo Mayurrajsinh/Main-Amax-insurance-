@@ -1,34 +1,60 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from 'react-router-dom';
 import RenewDetail from "./ui/RenewDetail";
-import { FaChevronDown, FaChevronUp, FaArrowRight } from "react-icons/fa";
+import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 
 const RegistrationInputBox = () => {
   const { type } = useParams();
-  const featureData = [
-    { heading: "Coverage Highlights", description: "Know more" },
-    { heading: "Inclusions", description: "What's covered?" },
-    { heading: "Exclusions", description: "What's not covered?" },
-    { heading: "Additional Covers", description: "What else can you get?" },
-  ];
-  const handleCarRenewClick = () => {
-  setFeatureData([
-    { heading: "Coverage Highlights", description: "Know more" },
-    { heading: "Inclusions", description: "What's covered?" },
-    { heading: "Exclusions", description: "What's not covered?" },
-    { heading: "Additional Covers", description: "What else can you get?" },
-    { heading: "Key Highlights", description: "Know now" }, 
-  ]);
-};
-
+  const [featureData, setFeatureData] = useState([]);
   const [openIndex, setOpenIndex] = useState(null);
+    const [showImage, setShowImage] = useState(false);
+    
+     const [animationKey, setAnimationKey] = useState(0); // force image animation on type change
+
+
+  const insuranceType = type?.split("-")[0]; // car or bike
+  useEffect(() => {
+    const baseFeatures = [
+      { heading: "Coverage Highlights", description: "Know more" },
+      { heading: "Inclusions", description: "What's covered?" },
+      { heading: "Exclusions", description: "What's not covered?" },
+      { heading: "Additional Covers", description: "What else can you get?" },
+    ];
+
+
+
+    if (type === "car-renew") {
+      setFeatureData([
+        ...baseFeatures,
+        { heading: "Key Highlights", description: "Know now" },
+      ]);
+    } else {
+      setFeatureData(baseFeatures);
+    }
+
+    setShowImage(false);
+    setAnimationKey(prev => prev + 1); // triggers re-render for consistent animation
+
+    const timeout = setTimeout(() => {
+      setShowImage(true);
+    }, 100); // slight delay to ensure transition starts properly
+
+    return () => clearTimeout(timeout);
+  }, [type]);
+
+
 
   const toggleSection = (index) => {
     setOpenIndex(openIndex === index ? null : index);
   };
+  const imageSrc = insuranceType === "car"
+    ? "/Images/motor-banner-lop.webp"
+    : insuranceType === "bike"
+      ? "/Images/bike-banner-img.webp"
+      : null;
 
   return (
-    <div>
+    <div className="overflow-hidden">
       <div
         className="w-full py-10 px-4"
         style={{
@@ -43,7 +69,7 @@ const RegistrationInputBox = () => {
               Best price for your requirement
             </h1>
 
-            <div className="bg-[#eff0f3] shadow-lg rounded-xl p-6 w-full">
+            <div className="bg-white shadow-md rounded-xl p-6 w-full">
               <label
                 htmlFor="regNumber"
                 className="block text-sm font-semibold mb-2 text-gray-700 ml-2"
@@ -78,96 +104,103 @@ const RegistrationInputBox = () => {
               Brand New {type.split("-")[0]}?{" "}
               <a href="#" className="text-black underline ml-2">Click here</a>
             </h1>
+
+
+                        {imageSrc && (
+              <img
+                key={animationKey} // force re-render for animation
+                src={imageSrc}
+                alt={`${insuranceType} insurance`}
+                className={`-mt-22 w-[420px] transition-transform duration-[1500ms] ease-out ${
+                  showImage ? "translate-x-0" : "-translate-x-[100%]"
+                }`}
+              />
+            )}
           </div>
 
           {/* Right Side – Info Box */}
           <div className="w-full max-w-[700px] bg-white px-8 py-6 rounded-2xl shadow-2xl ml-auto mr-6 space-y-8">
 
-          {/* Static top section */}
-          <div className="flex flex-col space-y-1">
-            <h2 className="text-xl font-bold text-gray-900">Key Features</h2>
-            <p className="text-sm text-gray-600">Renew Your Ride, Secure Your Journey!</p>
-          </div>
+            {/* Static top section */}
+            <div className="flex flex-col space-y-1">
+              <h2 className="text-xl font-bold text-gray-900">Key Features</h2>
+              <p className="text-sm text-gray-600">Renew Your Ride, Secure Your Journey!</p>
+            </div>
 
-          {/* Toggleable sections */}
-          {featureData.map((item, index) => (
-            <div key={index} className="border-t pt-5">
-              <div
-                className="flex items-center justify-between cursor-pointer"
-                onClick={() => toggleSection(index)}
-              >
-                <div className="flex flex-col">
-                  <h3 className="text-lg font-bold text-gray-800">{item.heading}</h3>
-                  <p className="text-lg text-gray-600 whitespace-nowrap">{item.description}</p>
+            {/* Toggleable sections */}
+            {featureData.map((item, index) => (
+              <div key={index} className="border-t pt-5">
+                <div
+                  className="flex items-center justify-between cursor-pointer"
+                  onClick={() => toggleSection(index)}
+                >
+                  <div className="flex flex-col">
+                    <h3 className="text-lg font-bold text-gray-800">{item.heading}</h3>
+                    <p className="text-lg text-gray-600 whitespace-nowrap">{item.description}</p>
+                  </div>
+                  <div className="ml-4 text-gray-600 text-xl">
+                    {openIndex === index ? <FaChevronUp /> : <FaChevronDown />}
+                  </div>
                 </div>
 
-                <div className="ml-4 text-gray-600 text-xl">
-                  {openIndex === index ? <FaChevronUp /> : <FaChevronDown />}
-                </div>
+                {openIndex === index && (
+                  <div className="mt-4 text-sm text-gray-700 space-y-3 pl-2">
+                    {item.heading === "Coverage Highlights" ? (
+                      <>
+                        {[
+                          ["Accidental Damage:", "Covers repair or replacement costs from collisions or mishaps"],
+                          ["Theft Protection:", "Safeguards against loss or attempted theft of the vehicle"],
+                          ["Third-Party Liability:", "Protection for injuries and property damage to others"],
+                          ["Fire & Natural Calamities:", "Covers damages from fire incidents or extreme weather"],
+                          ["Personal Accident Cover:", "Financial support for injuries sustained during an accident"]
+                        ].map(([title, desc], i) => (
+                          <div key={i} className="mb-3">
+                            <strong className="block text-lg text-[#264A9F]">{title}</strong>
+                            <span className="text-gray-700 text-sm">{desc}</span>
+                          </div>
+                        ))}
+                      </>
+                    ) : item.heading === "Inclusions" ? (
+                      <ul className="list-disc ml-5 space-y-2 text-lg">
+                        <li>Damage due to accidents, fire, theft, and natural calamities</li>
+                        <li>Third-party liabilities including bodily injury and property damage</li>
+                        <li>Personal accident cover for both the policyholder and optional pillion rider</li>
+                        <li>Coverage for damages incurred during transit of the vehicle</li>
+                        <li>Add-on covers like zero depreciation and engine protection (as opted)</li>
+                      </ul>
+                    ) : item.heading === "Exclusions" ? (
+                      <ul className="list-disc ml-5 space-y-2 text-lg">
+                        <li>Normal wear and tear or mechanical/electrical breakdowns</li>
+                        <li>Riding without a valid licence or under the influence of alcohol or drugs</li>
+                        <li>Unauthorised modifications and racing-related damages</li>
+                        <li>Damage outside the geographical limits of the policy</li>
+                        <li>Intentional damage or fraudulent claims</li>
+                      </ul>
+                    ) : item.heading === "Additional Covers" ? (
+                      <ul className="list-disc ml-5 space-y-2 text-lg">
+                        <li>24/7 emergency claim assistance and customer support</li>
+                        <li>Dedicated digital policy management platform</li>
+                        <li>Fast-track claim processing for quick settlements</li>
+                        <li>Free roadside assistance and towing services</li>
+                        <li>Regular updates on policy benefits and renewal reminders</li>
+                        <li>Expert advice for maintenance and safety enhancements</li>
+                      </ul>
+                    ) : item.heading === "Key Highlights" ? (
+                      <ul className="list-disc ml-5 space-y-2 text-lg">
+                        <li>Best-in-class renewal coverage options</li>
+                        <li>Seamless online policy updates</li>
+                        <li>Instant premium calculation and discounts</li>
+                        <li>24x7 support for claims and queries</li>
+                        <li>Dedicated assistance for expired policies</li>
+                      </ul>
+                    ) : (
+                      <p className="text-gray-600">Content coming soon...</p>
+                    )}
+                  </div>
+                )}
               </div>
-
-              {openIndex === index && (
-                <div className="mt-4 text-sm text-gray-700 space-y-3 pl-2">
-                  {item.heading === "Coverage Highlights" ? (
-                    <>
-                      {[
-          ["Accidental Damage:", "Covers repair or replacement costs from collisions or mishaps"],
-          ["Theft Protection:", "Safeguards against loss or attempted theft of the vehicle"],
-          ["Third-Party Liability:", "Protection for injuries and property damage to others"],
-          ["Fire & Natural Calamities:", "Covers damages from fire incidents or extreme weather"],
-          ["Personal Accident Cover:", "Financial support for injuries sustained during an accident"]
-        ].map(([title, desc], i) => (
-          <div key={i} className="mb-3">
-            <strong className="block text-lg text-[#264A9F]">{title}</strong>
-            <span className="text-gray-700 text-sm">{desc}</span>
+            ))}
           </div>
-        ))}
-
-            </>
-          ) : item.heading === "Inclusions" ? (
-            <ul className="list-disc ml-5 space-y-2 text-lg">
-              <li>Damage due to accidents, fire, theft, and natural calamities</li>
-              <li>Third-party liabilities including bodily injury and property damage</li>
-              <li>Personal accident cover for both the policyholder and optional pillion rider</li>
-              <li>Coverage for damages incurred during transit of the vehicle</li>
-              <li>Add-on covers like zero depreciation and engine protection (as opted)</li>
-            </ul>
-          ) : item.heading === "Exclusions" ? (
-            <ul className="list-disc ml-5 space-y-2 text-lg">
-              <li>Normal wear and tear or mechanical/electrical breakdowns</li>
-              <li>Riding without a valid licence or under the influence of alcohol or drugs</li>
-              <li>Unauthorised modifications and racing-related damages</li>
-              <li>Damage outside the geographical limits of the policy</li>
-              <li>Intentional damage or fraudulent claims (as opted)</li>
-            </ul>
-          ) : item.heading === "Additional Covers" ? (
-            <ul className="list-disc ml-5 space-y-2 text-lg">
-              <li>24/7 emergency claim assistance and customer support</li>
-              <li>Dedicated digital policy management platform</li>
-              <li>Fast-track claim processing for quick settlements</li>
-              <li>Free roadside assistance and towing services</li>
-              <li>Regular updates on policy benefits and renewal reminders</li>
-              <li>Expert advice for maintenance and safety enhancements</li>
-            </ul>
-          ) : item.heading === "Key Highlights" ? (
-            <ul className="list-disc ml-5 space-y-2 text-lg">
-              <li>Best-in-class renewal coverage options</li>
-              <li>Seamless online policy updates</li>
-              <li>Instant premium calculation and discounts</li>
-              <li>24x7 support for claims and queries</li>
-              <li>Dedicated assistance for expired policies</li>
-            </ul>
-          ) :
-          (
-            <p className="text-gray-600">Content coming soon...</p>
-          )}
-        </div>
-      )}
-    </div>
-  ))}
-          </div>
-
-
         </div>
       </div>
 

@@ -9,7 +9,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
 function Faqsec() {
   return (
-     <div className="w-full bg-[#f1f1f1] h-130">
+     <div className="w-full bg-[#f1f1f1] h-git">
           <Tabs defaultValue="Genral" className="w-300  px-2 mx-auto">
         <h3 className="text-3xl mt-10">FAQ's</h3>
         <TabsList className="flex gap-2 justify-center  mx-auto mb-8">

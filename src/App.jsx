@@ -6,12 +6,14 @@ import Claim from './Pages/Claim'
 import Footer from './Pages/Footer'
 import Support from './Pages/Support'
 import MyPolicy from './Pages/MyPolicy'
+import Internationaltravel from './Components/internationaltravel';
+
 
 
 
 
 function App() {
-  return (
+  return (  
     <>
       <Navbar />
       <Routes>
@@ -20,6 +22,7 @@ function App() {
          <Route path="/claim/:insuranceType" element={<Claim />} />
         <Route path="/support" element={<Support />} />
         <Route path="/MyPolicy" element={<MyPolicy />} />
+        <Route path='/international-travel' element={<Internationaltravel/>} />
 
       </Routes>
       <Footer/>

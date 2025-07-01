@@ -46,7 +46,7 @@ function RenewDes() {
     ]
   return (
     <div className="flex flex-col justify-center items-center w-full ">
-         <div className="flex flex-col justify-center items-center  w-[80%] h-auto p-4 ">
+         <div className="flex flex-col justify-center items-center  w-[98%] h-auto p-4 ">
             <h1 className="text-2xl font-bold my-3">What is Bike Insurnace</h1>
             <p>Bike insurance or two wheeler insurance is an insurance policy that covers you against damages to your two-wheeler due to accidents, natural/man-made disasters, fire, and theft. The motorcycle insurance policy also provides law-mandated coverage against third-party liabilities such as damage to another person’s vehicle/property or injuries/death of a third party caused due to the insured two-wheeler. You can buy or do bike insurance renewal to get coverage for motorcycles, scooters, mopeds, etc.</p>
             <h1 className="text-2xl font-bold leading-relaxed my-6">Features of Amax Two wheeler Insurance Policy</h1>
@@ -102,7 +102,7 @@ function RenewDes() {
                     </tbody>
                 </table>
             </div>
-            <div className="my-5 h-auto w-450 bg-purple-50 flex flex-col justify-center items-center mt-17">
+            <div className="my-5 h-auto w-full bg-purple-50 flex flex-col justify-center items-center mt-17">
                 <h1 className="text-3xl font-bold my-10 mt-18">Benefits of Buying Two wheeler Insurance Online</h1>
                 <p className="mb-5 text-lg">Here are the advantages of buying online bike insurance.</p>
                 <div className="flex flex-wrap justify-center gap-6 px-4 py-8">
@@ -122,7 +122,7 @@ function RenewDes() {
                     ))}
                 </div>
             </div>
-            <div className="my-5 h-auto w-450  flex flex-col justify-center items-center mt-25">
+            <div className="my-5 h-auto w-full  flex flex-col justify-center items-center mt-25">
                 <h1 className="text-3xl font-bold my-10 mt-18">Why Should You Buy Bike Insurance?</h1>
                 <p className="mb-9 text-lg">Here are some of the reasons why you should have an insurance policy for two-wheeler:</p>
                 <div className="flex flex-wrap justify-center gap-4 px-2 py-4">

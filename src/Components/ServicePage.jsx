@@ -7,13 +7,13 @@ import Inpbox3 from './Inpbox3'
 const serviceData = {
   'car-insurance': {
     heading: 'Buy/Renew Car Insurance Online',
-    description: 'Believe it or Not! Save up to* 75% on TATA AIG Car Insurance',
+    description: 'Believe it or Not! Save up to* 75% on Amax Car Insurance',
     headingTag: 'h3',
     className: 'text-xl font-semibold',
   },
   'bike-insurance': {
     heading: 'Buy/Renew Bike Insurance Online',
-    description: 'Believe it or Not! Save up to* 75% on TATA AIG Bike Insurance',
+    description: 'Believe it or Not! Save up to* 75% on Amax Bike Insurance',
     headingTag: 'h3',
     className: 'text-xl font-semibold',
   },
