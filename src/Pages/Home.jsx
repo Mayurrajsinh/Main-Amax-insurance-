@@ -70,23 +70,25 @@ function Home() {
 
   return (
     <>
-      <div className="p-2 pt-24 flex justify-between h-fit bg-gradient-to-r from-blue-400 to-yellow-200 gap-1">
-        <Tabs defaultValue="personal" className="w-full">
-          {/* ✅ Use reusable component */}
-          <ItemsBox tabItems={tabItems} tabImages={tabImages} plans={plans} />
-        </Tabs>
-      </div>
+      <div className="overflow-x-hidden w-full">
+        <div className="p-2 pt-24 flex justify-between h-fit bg-gradient-to-r from-blue-400 to-yellow-200 gap-1 ">
+          <Tabs defaultValue="personal" className="w-full">
+            {/* ✅ Use reusable component */}
+            <ItemsBox tabItems={tabItems} tabImages={tabImages} plans={plans} />
+          </Tabs>
+        </div>
 
-      <div className="flex justify-center my-8">
-        <MobileappCard />
-      </div>
+        <div className="flex justify-center my-8 ">
+          <MobileappCard />
+        </div>
 
-      <div className="flex px-4 text-xl font-semibold">
-        Insurance Simplified: Must-Read Articles
-      </div>
+        <div className="flex px-4 text-xl font-semibold">
+          Insurance Simplified: Must-Read Articles
+        </div>
 
-      <div className="">
-        <Assistance />
+        <div className="">
+          <Assistance />
+        </div>
       </div>
     </>
   );
