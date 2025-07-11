@@ -9,6 +9,7 @@ import MyPolicy from './Pages/MyPolicy'
 import Internationaltravel from './Components/internationaltravel';
 import AdminDesk from './Pages/AdminDesk'
 import AmaxBuyins from './Components/AmaxBuyins'
+import Health_insurance from './Components/Health_insurance'
 
 
 
@@ -30,6 +31,7 @@ function App() {
         <Route path='/international-travel' element={<Internationaltravel/>} />
         <Route path='AdminDesk'element={<AdminDesk />} />
         <Route path='AmaxBuyins' element={<AmaxBuyins />} />
+        <Route path='health-insurance'element={<Health_insurance />} />
 
       </Routes>
       <Footer/>
