@@ -81,14 +81,89 @@ function Home() {
         <div className="flex justify-center my-8 ">
           <MobileappCard />
         </div>
+        <div className="mt-20">
+          <h3 className="font-bold text-2xl ml-8">What Our Cutomers Are Saying</h3>
+          <div className="flex px-4 text-xl ">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 p-6">
+  {[
+    {
+      title: "Rajveer Sharma",
+      des: "I would like to thank the website 'www.policybazaar.com' because of which I could get a good policy."
+    },
+    {
+      title: "Vikash Yadav",
+      des: "Thanking you very much for your support for getting our policy quickly, I would appreciate your work."
+    },
+    {
+      title: "Jone Weak",
+      des: "The services provided by Policybazaar are extremely helpful in making the right choice. Overall I had a good experience with Policybazaar."
+    }
+  ].map((item, index) => (
+    <div
+      key={index}
+      className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-all"
+    >
+      <h4 className="text-xl font-semibold mb-4 text-gray-800">
+        {item.title}
+      </h4>
+      <p className="text-gray-600 text-sm">{item.des}</p>
+    </div>
+  ))}
+</div>
 
-        <div className="flex px-4 text-xl font-semibold">
-          Insurance Simplified: Must-Read Articles
+        </div>
         </div>
 
         <div className="">
           <Assistance />
         </div>
+      </div>
+      <div className="flex justify-center">
+          <div className="w-300 h-fit bg-[#f7f9ff]">
+            <h1 className="flex justify-center font-bold text-3xl my-4">Our Partner</h1>
+            <p className="flex justify-center opacity-30 mb-9">Leading insurers for your financial freedom</p>
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 p-4">
+            {[
+              "Bajaj-Allianz-Insurance.webp",
+              "Birla_Sunlife_Insurance.webp",
+              "Canara_HSBC_Insurance..webp",
+              "Care-Insurance.webp",
+              "Cholamandalam-Insurance..webp",
+              "Edelweis_Tokio_Insurance.d2d8fc7e75f9ef7b16ef.webp",
+              "Exide-insurance.webp",
+              "Future-Generali-Insurance.webp",
+              "HDFC_Life_Insurance.webp",
+              "HDFC-ERGO-Insurance.webp",
+              "ICICI_Pru_Insurance.webp",
+              "ICICI-Lombard-Insurance.webp",
+              "IDBI_Fed_Insurance.webp",
+              "IFFCO-Tokio-Insurance.webp",
+              "Kotak-General-Insurance.webp",
+              "Manipal-Cigna-Insurance.webp",
+              "Niva-Bupa-Insurance.webp",
+              "Oriental-Insurance.webp",
+              "Reliance-Insurance.webp",
+              "SBI-Insurance.webp",
+              "Star-Insurance.webp",
+              "United-India-Insurance.webp",
+              "Universal_Sompo.webp",
+              "Royal_Sundram.png",
+            ].map((file, index) => (
+              <div
+                key={index}
+                className="bg-white p-4 rounded-lg shadow-sm flex justify-center items-center 
+                          opacity-20 hover:opacity-100 transition duration-300 ease-in-out"
+              >
+                <img
+                  src={`/Images/PartnerImg/${file}`}
+                  alt={`Partner ${index}`}
+                  className="w-28 h-auto object-contain"
+                />
+              </div>
+            ))}
+          </div>
+
+          </div>
       </div>
     </>
   );
